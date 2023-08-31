@@ -1,1 +1,1 @@
-### Solved Data Structure & Algorithms Problems
+### Completed Data Structure & Algorithms Problems
