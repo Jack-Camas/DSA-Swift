@@ -15,6 +15,11 @@
  Output: 2
  */
 
+
+/*
+ Time Complexity = o(n)
+ Space Complexity = o(n)
+ */
 class Solution {
 	func majorityElement(_ nums: [Int]) -> Int {
 		var dict = [Int:Int]()
@@ -33,6 +38,31 @@ class Solution {
 			if value > highestValue {
 				highestValue = value
 				majority  = key
+			}
+		}
+		return majority
+	}
+}
+
+/*
+ In order to optimize this problem we are able to use the
+ Boyer-Moore majority voring algorithm to achieve.
+ Time Complexity = o(n)
+ Space complexity = o(1)
+ */
+
+class Solution {
+	func majorityElement(_ nums: [Int]) -> Int {
+		var majority =  0
+		var count = 0
+		
+		for i in 0..<nums.count {
+			if count == 0 {
+				majority = nums[i]
+			} else if majority == nums[i] {
+				count += 1
+			} else {
+				count -= 1
 			}
 		}
 		return majority
