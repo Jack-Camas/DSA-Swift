@@ -20,6 +20,12 @@
  Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
  */
 
+/*
+ Brute force solution
+ Space Complexity = o(n^2)
+ Time complexity = o(1)
+ */
+
 class Solution {
 	func maxSubArray(_ nums: [Int]) -> Int {
 		var maxArray = nums[0]
@@ -32,5 +38,24 @@ class Solution {
 			}
 		}
 		return maxArray
+	}
+}
+
+
+/*
+ Kadane's Algorithm
+ Space Complexity = o(n)
+ Time complexity = o(1)
+ */
+class Solution {
+	func maxSubArray(_ nums: [Int]) -> Int {
+		var maxSum = nums[0]
+		var currSum = 0
+		
+		for i in 0..<nums.count{
+			currSum = max(nums[i], nums[i] + currSum)
+			maxSum = max(maxSum, currSum)
+		}
+		return maxSum
 	}
 }
