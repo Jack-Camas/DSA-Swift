@@ -46,3 +46,30 @@ class Solution {
 		return true
 	}
 }
+
+
+//Different approach
+// We just need to one dictionary for magazine
+// and decrease the count for the chars the appear in ransom
+class Solution {
+	func canConstruct(_ ransomNote: String, _ magazine: String) -> Bool {
+		var dict = [Character:Int]()
+		
+		for c in magazine {
+			if let value = dict[c] {
+				dict[c] = value + 1
+			} else {
+				dict[c] = 1
+			}
+		}
+		
+		for char in ransomNote {
+			if let value = dict[char], value > 0 {
+				dict[char] = value - 1
+			} else {
+				return false
+			}
+		}
+		return true
+	}
+}
